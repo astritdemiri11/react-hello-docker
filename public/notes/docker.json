@@ -1,86 +1,485 @@
 {
-    "label": "Commands",
-    "definition": "",
+    "label": "Docker",
+    "definition": "Docker is an open platform for developing, shipping, and running applications",
+    "keywords": [
+        "app",
+        "terminal",
+        "command"
+    ],
+    "childrenType": "command",
     "children": {
-        "docker": {
-            "label": "Docker Commands",
-            "definition": "",
-            "children": {
-                "build": {
-                    "label": "build",
-                    "definition": ""
-                },
-                "container": {
-                    "label": "container",
-                    "definition": ""
-                },
-                "history": {
-                    "label": "history",
-                    "definition": ""
-                },
-                "image": {
-                    "label": "image",
-                    "definition": ""
-                },
-                "images": {
-                    "label": "images",
-                    "definition": ""
-                },
-                "push": {
-                    "label": "push",
-                    "definition": ""
+        "build": {
+            "key": "build",
+            "label": "build",
+            "definition": "Build an image from a Dockerfile",
+            "options": {
+                "file": {
+                    "key": "file",
+                    "label": "-f, --file",
+                    "definition": "Name of the Dockerfile (Default is 'PATH/Dockerfile')"
                 },
                 "tag": {
-                    "label": "tag",
-                    "definition": ""
-                },
-                "run": {
-                    "label": "run",
-                    "definition": ""
+                    "key": "tag",
+                    "label": "-t, --tag",
+                    "definition": "Name and optionally a tag in the 'name:tag' format"
                 }
             }
         },
-        "dockerfile": {
-            "label": "Dockerfile Commands",
-            "definition": "",
+        "config": {
+            "key": "config",
+            "label": "config",
+            "definition": "Manage Docker configs"
+        },
+        "container": {
+            "key": "container",
+            "label": "container",
+            "definition": "Manage containers",
+            "childrenType": "subcommand",
             "children": {
-                "cmd": {
-                    "label": "CMD",
-                    "definition": ""
-                },
-                "copy": {
-                    "label": "COPY",
-                    "definition": ""
-                },
-                "entryPoint": {
-                    "label": "ENTRYPOINT",
-                    "definition": ""
-                },
-                "expose": {
-                    "label": "EXPOSE",
-                    "definition": ""
-                },
-                "env": {
-                    "label": "ENV",
-                    "definition": ""
-                },
-                "from": {
-                    "label": "FROM",
-                    "definition": ""
-                },
-                "run": {
-                    "label": "RUN",
-                    "definition": ""
-                },
-                "user": {
-                    "label": "USER",
-                    "definition": ""
-                },
-                "workDir": {
-                    "label": "WORKDIR",
-                    "definition": ""
+                "create": {
+                    "key": "create",
+                    "label": "create",
+                    "definition": "Create a new container"
                 }
             }
+        },
+        "create": {
+            "key": "create",
+            "label": "create",
+            "definition": "Create a new container"
+        },
+        "exec": {
+            "key": "exec",
+            "label": "",
+            "definition": "Run a command in a running container",
+            "parameters": [{
+                "label": "containerName",
+                "type": "string",
+                "description": "Running container name to exec command"
+            },{
+                "label": "commandName",
+                "type": "string",
+                "description": "Command name to be executed"
+            }],
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "history": {
+            "key": "history",
+            "label": "history",
+            "definition": "Show the history of an image",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "image": {
+            "key": "image",
+            "label": "image",
+            "definition": "Manage images",
+            "childrenType": "subcommand",
+            "children": {
+                "load": {
+                    "key": "load",
+                    "label": "load",
+                    "definition": "Load an image from a tar archive or STDIN",
+                    "options": {
+                        "input": {
+                            "key": "input",
+                            "label": "-i, --input",
+                            "definition": "Read from tar archive file, instead of STDIN",
+                            "parameters": [{
+                                "label": "tarName",
+                                "type": "string",
+                                "description": "Path of tar file to be loaded"
+                            }]
+                        }
+                    }
+                },
+                "rm": {
+                    "key": "rm",
+                    "label": "rm",
+                    "definition": "Remove one or more images",
+                    "parameters": [{
+                        "label": "imagesName",
+                        "type": "string[]",
+                        "description": "Images to be removed"
+                    }],
+                    "options": {
+                        "force": {
+                            "key": "force",
+                            "label": "-f, --force",
+                            "definition": "Write to a file, instead of STDOUT"
+                        }
+                    }
+                },
+                "save": {
+                    "key": "save",
+                    "label": "save",
+                    "definition": "Save one or more images to a tar archive (streamed to STDOUT by default)",
+                    "options": {
+                        "output": {
+                            "key": "output",
+                            "label": "-o, --output",
+                            "definition": "Write to a file, instead of STDOUT",
+                            "parameters": [{
+                                "label": "tarName",
+                                "type": "string",
+                                "description": "Path for generated tar file"
+                            },{
+                                "label": "imageName",
+                                "type": "string",
+                                "description": "Image name to be compressed into tar file"
+                            }]
+                        }
+                    }
+                }
+            }
+        },
+        "images": {
+            "key": "images",
+            "label": "images",
+            "definition": "List images",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "kill": {
+            "key": "kill",
+            "label": "kill",
+            "definition": "Kill one or more running containers",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "load": {
+            "key": "load",
+            "label": "load",
+            "definition": "Load an image from a tar archive or STDIN",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "login": {
+            "key": "login",
+            "label": "login",
+            "definition": "Log in to a Docker registry",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "logout": {
+            "key": "logout",
+            "label": "logout",
+            "definition": "Log out from a Docker registry",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "logs": {
+            "key": "logs",
+            "label": "logs",
+            "definition": "Fetch the logs of a container",
+            "parameters": [{
+                "label": "containerName",
+                "type": "string",
+                "description": "Container name to fetch logs"
+            }],
+            "options": {
+                "follow": {
+                    "key": "follow",
+                    "label": "-f, --follow",
+                    "definition": "Follow log output"
+                },
+                "tail": {
+                    "key": "follow",
+                    "label": "-n, --tail",
+                    "definition": "Number of lines to show from the end of the logs",
+                    "parameters": [{
+                        "label": "lineNr",
+                        "type": "number",
+                        "default": "all",
+                        "description": "Nr of lines to be shown"
+                    }]
+                },
+                "timestamps": {
+                    "key": "follow",
+                    "label": "-t, --timestamps",
+                    "definition": "Show timestamps"
+                }
+            }
+        },
+        "pause": {
+            "key": "pause",
+            "label": "pause",
+            "definition": "Pause all processes within one or more containers",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "port": {
+            "key": "port",
+            "label": "port",
+            "definition": "List port mappings or a specific mapping for the container",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "ps": {
+            "key": "ps",
+            "label": "ps",
+            "definition": "List containers",
+            "options": {
+                "all": {
+                    "key": "all",
+                    "label": "-a, --all",
+                    "definition": "Show all containers (default shows just running)"
+                }
+            }
+        },
+        "pull": {
+            "key": "pull",
+            "label": "pull",
+            "definition": "Pull an image or a repository from a registry",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "push": {
+            "key": "push",
+            "label": "push",
+            "definition": "Push an image or a repository to a registry",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "restart": {
+            "key": "restart",
+            "label": "restart",
+            "definition": "Restart one or more containers",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "run": {
+            "key": "run",
+            "label": "run",
+            "definition": "Run a command in a new container",
+            "parameters": [{
+                "label": "imageName",
+                "type": "string",
+                "description": "Image name to be run in container"
+            }],
+            "options": {
+                "detach": {
+                    "key": "detach",
+                    "label": "-d, --detach",
+                    "definition": "Run container in background and print container ID"
+                },
+                "interactive": {
+                    "key": "interactive",
+                    "label": "-i, --interactive",
+                    "definition": "Keep STDIN open even if not attached"
+                },
+                "name": {
+                    "key": "name",
+                    "label": "--name",
+                    "definition": "Assign a name to the container"
+                },
+                "port": {
+                    "key": "port",
+                    "label": "-p, --port",
+                    "definition": "Run container in background and print container ID",
+                    "parameters": [{
+                        "label": "portNr",
+                        "type": "number:number",
+                        "description": "Port number to be published"
+                    }]
+                },
+                "rm": {
+                    "key": "rm",
+                    "label": "--rm",
+                    "definition": "Automatically remove the container when it exits"
+                },
+                "tty": {
+                    "key": "tty",
+                    "label": "-t, --tty",
+                    "definition": "Allocate a pseudo-TTY"
+                }
+            }
+        },
+        "rm": {
+            "key": "rm",
+            "label": "rm",
+            "definition": "Remove one or more containers",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "rmi": {
+            "key": "rmi",
+            "label": "rmi",
+            "definition": "Remove one or more images",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "save": {
+            "key": "save",
+            "label": "save",
+            "definition": "Save one or more images to a tar archive",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "start": {
+            "key": "start",
+            "label": "start",
+            "definition": "Start one or more stopped containers",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "stop": {
+            "key": "stop",
+            "label": "stop",
+            "definition": "Stop one or more running containers",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "tag": {
+            "key": "tag",
+            "label": "tag",
+            "definition": "Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "unpause": {
+            "key": "unpause",
+            "label": "unpause",
+            "definition": "Unpause all processes within one or more containers",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "update": {
+            "key": "update",
+            "label": "update",
+            "definition": "Update configuration of one or more containers",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        },
+        "version": {
+            "key": "version",
+            "label": "version",
+            "definition": "Show the Docker version information",
+            "options": {
+                "option": {
+                    "key": "option",
+                    "label": "-shortOption, --longOption",
+                    "definition": "Definition"
+                }
+            }
+        }
+    },
+    "options": {
+        "config": {
+            "key": "config",
+            "label": "--config",
+            "definition": "Location of client config files"
+        },
+        "debug": {
+            "key": "debug",
+            "label": "-D, --debug",
+            "definition": "Enable debug mode"
+        },
+        "version": {
+            "key": "version",
+            "label": "-v, --version",
+            "definition": "Print version information"
         }
     }
 }

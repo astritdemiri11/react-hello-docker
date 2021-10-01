@@ -2,6 +2,13 @@
     "label": "Commands",
     "definition": "",
     "children": {
-        
+        "cd": {
+            "label": "cd",
+            "definition": ""
+        },
+        "mkdir": {
+            "label": "mkdir",
+            "definition": ""
+        }
     }
 }

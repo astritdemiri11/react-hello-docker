@@ -1,0 +1,53 @@
+{
+    "label": "Dockerfile",
+    "definition": "Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image",
+    "keyword": [
+        "file",
+        "command",
+        "script"
+    ],
+    "details": {
+        "name": "Dockerfile",
+        "extension": null,
+        "config": [".dockerignore"]
+    },
+    "children": {
+        "cmd": {
+            "label": "CMD",
+            "definition": ""
+        },
+        "copy": {
+            "label": "COPY",
+            "definition": ""
+        },
+        "entryPoint": {
+            "label": "ENTRYPOINT",
+            "definition": ""
+        },
+        "expose": {
+            "label": "EXPOSE",
+            "definition": ""
+        },
+        "env": {
+            "label": "ENV",
+            "definition": ""
+        },
+        "from": {
+            "label": "FROM",
+            "definition": ""
+        },
+        "run": {
+            "label": "RUN",
+            "definition": ""
+        },
+        "user": {
+            "label": "USER",
+            "definition": ""
+        },
+        "workDir": {
+            "label": "WORKDIR",
+            "definition": ""
+        }
+    },
+    "childrenType": "command"
+}
