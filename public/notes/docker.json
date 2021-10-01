@@ -1,0 +1,86 @@
+{
+    "label": "Commands",
+    "definition": "",
+    "children": {
+        "docker": {
+            "label": "Docker Commands",
+            "definition": "",
+            "children": {
+                "build": {
+                    "label": "build",
+                    "definition": ""
+                },
+                "container": {
+                    "label": "container",
+                    "definition": ""
+                },
+                "history": {
+                    "label": "history",
+                    "definition": ""
+                },
+                "image": {
+                    "label": "image",
+                    "definition": ""
+                },
+                "images": {
+                    "label": "images",
+                    "definition": ""
+                },
+                "push": {
+                    "label": "push",
+                    "definition": ""
+                },
+                "tag": {
+                    "label": "tag",
+                    "definition": ""
+                },
+                "run": {
+                    "label": "run",
+                    "definition": ""
+                }
+            }
+        },
+        "dockerfile": {
+            "label": "Dockerfile Commands",
+            "definition": "",
+            "children": {
+                "cmd": {
+                    "label": "CMD",
+                    "definition": ""
+                },
+                "copy": {
+                    "label": "COPY",
+                    "definition": ""
+                },
+                "entryPoint": {
+                    "label": "ENTRYPOINT",
+                    "definition": ""
+                },
+                "expose": {
+                    "label": "EXPOSE",
+                    "definition": ""
+                },
+                "env": {
+                    "label": "ENV",
+                    "definition": ""
+                },
+                "from": {
+                    "label": "FROM",
+                    "definition": ""
+                },
+                "run": {
+                    "label": "RUN",
+                    "definition": ""
+                },
+                "user": {
+                    "label": "USER",
+                    "definition": ""
+                },
+                "workDir": {
+                    "label": "WORKDIR",
+                    "definition": ""
+                }
+            }
+        }
+    }
+}
